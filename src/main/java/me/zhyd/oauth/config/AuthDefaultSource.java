@@ -1296,6 +1296,47 @@ public enum AuthDefaultSource implements AuthSource {
         public Class<? extends AuthDefaultRequest> getTargetClass() {
             return AuthProginnRequest.class;
         }
-    }
+    },
+    TIKTOK {
+        /**
+         * 授权的api
+         *
+         * @return url
+         */
+        @Override
+        public String authorize() {
+            return "https://www.tiktok.com/v2/auth/authorize";
+        }
+
+        /**
+         * 获取accessToken的api
+         *
+         * @return url
+         */
+        @Override
+        public String accessToken() {
+            return "https://open.tiktokapis.com/v2/oauth/token";
+        }
+
+        /**
+         * 获取用户信息的api
+         *
+         * @return url
+         */
+        @Override
+        public String userInfo() {
+            return "https://open.tiktokapis.com/v2/user/info";
+        }
+
+        /**
+         * 平台对应的 AuthRequest 实现类，必须继承自 {@link AuthDefaultRequest}
+         *
+         * @return class
+         */
+        @Override
+        public Class<? extends AuthDefaultRequest> getTargetClass() {
+            return AuthTiktokRequest.class;
+        }
+    },
 
 }
